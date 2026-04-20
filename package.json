@@ -1,0 +1,97 @@
+{
+  "name": "ipl-stadium",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "node --import tsx/esm server/server.ts",
+    "start": "concurrently --names \"SERVER,CLIENT\" --prefix-colors \"cyan,green\" \"node --import tsx/esm server/server.ts\" \"vite\"",
+    "build": "tsc -b && vite build",
+    "build:server": "tsup",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "jest --testPathPatterns=geminiService.test --passWithNoTests",
+    "test:all": "jest --passWithNoTests"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default-esm",
+    "testEnvironment": "node",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "useESM": true,
+          "tsconfig": {
+            "types": [
+              "jest",
+              "node"
+            ]
+          }
+        }
+      ]
+    },
+    "testMatch": [
+      "**/tests/geminiService.test.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    }
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@react-google-maps/api": "^2.20.8",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "firebase": "^12.12.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-is": "^19.2.5",
+    "react-router-dom": "^7.14.0",
+    "recharts": "^3.8.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/supertest": "^7.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "jest": "^30.3.0",
+    "postcss": "^8.5.9",
+    "supertest": "^7.2.2",
+    "tailwindcss": "^4.2.2",
+    "ts-jest": "^29.4.9",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.0",
+    "vite": "^8.0.4",
+    "vite-plugin-pwa": "^1.2.0"
+  }
+}

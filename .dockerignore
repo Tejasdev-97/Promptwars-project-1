@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist-ssr/
+build/
+.env
+.env.*
+.git/
+.DS_Store
+lint_output.txt
